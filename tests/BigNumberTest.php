@@ -15,6 +15,8 @@ class BigNumberTest extends \PHPUnit_Framework_TestCase
     public function testAdd()
     {
         $this->assertSame('42', (new BigNumber('32'))->add(new BigNumber('10'))->__toString());
+        $this->assertSame('42', (new BigNumber(32))->add(new BigNumber(10))->__toString());
+        $this->assertSame('42', (new BigNumber(32.0))->add(new BigNumber(10.0))->__toString());
         $this->assertSame('42.1', (new BigNumber('32.10'))->add(new BigNumber('10.000'))->__toString());
 
         $this->assertSame('42', (new BigNumber('32'))->add('10')->__toString());

@@ -82,7 +82,11 @@ class NaturalNumberSwedishTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('0.2', NaturalNumberSwedish::parse('en femtedel'));
 
         $this->assertSame('0.75', NaturalNumberSwedish::parse('tre fjärdedelar'));
+
+        $this->assertSame('0.6', NaturalNumberSwedish::parse('tre femtedel'));
+        $this->assertSame('0.6', NaturalNumberSwedish::parse('tre femtedels'));
         $this->assertSame('0.6', NaturalNumberSwedish::parse('tre femtedelar'));
+        $this->assertSame('0.6', NaturalNumberSwedish::parse('tre femtedelars'));
 
         $this->assertSame('15.6', NaturalNumberSwedish::parse('femton och tre femtedelar'));
     }

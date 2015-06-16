@@ -10,13 +10,18 @@ class RationalNumber
 
     public function __construct($val)
     {
+        $this->parseValue($val);
+    }
+
+    public function parseValue($val)
+    {
         if (is_string($val)) {
             $x = explode('/', $val);
             $this->val = $x[0] / $x[1];
         } else if (is_numeric($val)) {
             $this->val = $val;
         } else {
-            throw new \Exception('bad input '.$val);
+            throw new \Exception('unhandled type ' . gettype($val));
         }
     }
 

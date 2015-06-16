@@ -5,6 +5,7 @@ class BigNumber
     /** @var string */
     var $value;
 
+    /** @var int */
     var $scale = 12;
 
     public function __construct($s)
@@ -86,11 +87,9 @@ class BigNumber
             return ''.$n;
         } else if (is_float($n)) {
             return ''.$n;
-        } else {
-            d(gettype($n));
-            d($n);
-            throw new \Exception;
         }
+
+        throw new \Exception('unhandled type '.gettype($n));
     }
 
     public function __toString()
@@ -114,18 +113,14 @@ class BigNumber
             $b = substr($s, $i, 1);
             if ($b != '0') {
                 if ($b == '.') {
-                    //d('OUT 0 (b is '.$b.'): '.substr($s, 0, $i));
                     return substr($s, 0, $i);
                 }
                 if ($i > 0 && substr($s, $i - 1, 1) == '.') {
-                    //d('OUT 1:' .substr($s, 0, $i + 1));
                     return substr($s, 0, $i + 1);
                 }
-                //d('OUT 2 (b is '.$b.'): '.substr($s, 0, $i+1));
                 return substr($s, 0, $i + 1);
             }
         }
-        //d('OUT:' .$s);
         return $s;
     }
 }
