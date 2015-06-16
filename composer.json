@@ -1,6 +1,7 @@
 {
     "name": "martinlindhe/php-number-presentation",
-    "description": "",
+    "description": "Some utility classes to work with numbers.",
+    "license": "MIT",
     "require": {
         "php": ">=5.4.0",
         "martinlindhe/php-debughelper": "~0.1"
