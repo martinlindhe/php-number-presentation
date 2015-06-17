@@ -282,6 +282,7 @@ class NaturalNumberSwedish
         }
 
         $scales = [
+            'halv'        => 1/2,
             'tredjedel'   => 1/3,
             'fjärdedel'   => 1/4,
             'femtedel'    => 1/5,

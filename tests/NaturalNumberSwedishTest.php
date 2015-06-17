@@ -79,6 +79,7 @@ class NaturalNumberSwedishTest extends \PHPUnit_Framework_TestCase
     public function testParseFractions()
     {
         $this->assertSame('0.5', NaturalNumberSwedish::parse('hälften'));
+        $this->assertSame('0.5', NaturalNumberSwedish::parse('en halv'));
         $this->assertSame('0.2', NaturalNumberSwedish::parse('en femtedel'));
 
         $this->assertSame('0.75', NaturalNumberSwedish::parse('tre fjärdedelar'));
