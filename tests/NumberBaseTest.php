@@ -40,8 +40,19 @@ class NumberBaseTest extends \PHPUnit_Framework_TestCase
     public function testConvertTo()
     {
         $this->assertSame('4', (new NumberBase('b0100'))->to(NumberBase::DECIMAL)->__toString());
-        $this->assertSame('0x4', (new NumberBase('b0100'))->to(NumberBase::HEXADECIMAL)->__toString());
-        $this->assertSame('o4', (new NumberBase('b0100'))->to(NumberBase::OCTAL)->__toString());
-        $this->assertSame('b100', (new NumberBase('b0100'))->to(NumberBase::BINARY)->__toString());
+        $this->assertSame('4', (new NumberBase('b0100'))->to(NumberBase::HEXADECIMAL)->__toString());
+        $this->assertSame('4', (new NumberBase('b0100'))->to(NumberBase::OCTAL)->__toString());
+        $this->assertSame('100', (new NumberBase('b0100'))->to(NumberBase::BINARY)->__toString());
+    }
+
+    public function test82000()
+    {
+        // NOTE: 82000 is special in that it is only using 0 and 1 in base 2,3,4 and 5
+
+        $this->assertSame('10100000001010000', (new NumberBase(82000))->to(2)->__toString());
+        $this->assertSame('11011111001', (new NumberBase(82000))->to(3)->__toString());
+        $this->assertSame('110001100', (new NumberBase(82000))->to(4)->__toString());
+        $this->assertSame('10111000', (new NumberBase(82000))->to(5)->__toString());
+        $this->assertSame('1431344', (new NumberBase(82000))->to(6)->__toString());
     }
 }

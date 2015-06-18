@@ -137,16 +137,6 @@ class NumberBase
      */
     public function __toString()
     {
-        if ($this->unit == self::BINARY) {
-            return 'b'.$this->value;
-        }
-        if ($this->unit == self::OCTAL) {
-            return 'o'.$this->value;
-        }
-        if ($this->unit == self::HEXADECIMAL) {
-            return '0x'.$this->value;
-        }
-
         return $this->value;
     }
 }
