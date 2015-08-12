@@ -1,7 +1,7 @@
 <?php namespace MartinLindhe\NumberPresentation;
 
 /**
- * Helpers for displaying math stuff in UTF-8
+ * Helpers for displaying numbers in UTF-8
  */
 class MathSymbol
 {
@@ -136,5 +136,36 @@ class MathSymbol
 
         err('subScriptNumber missing for '.$n);
         return '';
+    }
+
+    /**
+     * @param $s
+     * @return int|null
+     */
+    public static function fromSubScriptNumber($s)
+    {
+        if (mb_substr($s, 0, 1) == '₋') {
+            return -self::fromSubScriptNumber(mb_substr($s, 1));
+        }
+
+        $len = mb_strlen($s);
+
+        if ($len == 1) {
+            $res = array_search($s, self::$subScript);
+            if ($res === false) {
+                err('not found: '.$s);
+                return null;
+            }
+            return $res;
+        }
+
+        $last = mb_substr($s, -1);
+        $res = array_search($last, self::$subScript);
+        if ($res === false) {
+            err('not found: '.$last);
+            return null;
+        }
+
+        return (self::fromSubScriptNumber(mb_substr($s, 0, -1)) * 10) + $res;
     }
 }

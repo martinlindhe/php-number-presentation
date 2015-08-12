@@ -28,6 +28,14 @@ class MathSymbolTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('₋₁₅', MathSymbol::subScriptNumber(-15));
     }
 
+    public function testFromSubScript()
+    {
+        $this->assertSame(1, MathSymbol::fromSubScriptNumber('₁'));
+        $this->assertSame(123, MathSymbol::fromSubScriptNumber('₁₂₃'));
+        $this->assertSame(-1, MathSymbol::fromSubScriptNumber('₋₁'));
+        $this->assertSame(-15, MathSymbol::fromSubScriptNumber('₋₁₅'));
+    }
+
     public function testIsSuperScript()
     {
         $this->assertSame(true, MathSymbol::isSuperScript('¹'));
