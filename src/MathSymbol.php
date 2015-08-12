@@ -32,6 +32,30 @@ class MathSymbol
     ];
 
     /**
+     * @param string $s one unicode letter
+     * @return bool
+     */
+    public static function isSuperScript($s)
+    {
+        if (in_array($s, self::$superScript)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * @param string $s one unicode letter
+     * @return bool
+     */
+    public static function isSubScript($s)
+    {
+        if (in_array($s, self::$subScript)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
      * @param int $n
      * @return string utf8
      */
